@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-const ProfileSection = () => {
+const ProjectSection = () => {
   return (
     <div>
       
@@ -9,4 +9,4 @@ const ProfileSection = () => {
   )
 }
 
-export default ProfileSection
+export default ProjectSection
