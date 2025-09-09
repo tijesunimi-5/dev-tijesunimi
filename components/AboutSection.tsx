@@ -104,14 +104,14 @@ const AboutSection = () => {
   }, [activeTab]);
 
   return (
-    <section ref={sectionRef} id="about" className="section px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start">
+    <section ref={sectionRef} id="about" className="section xl:h-[70vh] xl:pt-[100px] px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start">
       <div ref={col1Ref} className="col1">
         <h1 className="text-[#FAA037] text-4xl font-bold">Get to know me</h1>
         <p className="mt-3 md:text-xl lg:w-[400px] xl:w-[700px]">
           Hey there! I'm a Fullstack developer and Machine Learning enthusiast who thrives on crafting websites that are as adaptive as they are eye-catching. With a knack for stunning visuals and a passion for solving tough challenges, I turn ideas into seamless, user-loving experiences.
         </p>
 
-        <div className="hash mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 w-[480px]">
+        <div className="hash mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 w-[310px]">
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#StunningVisuals</div>
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#CodeWizard</div>
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#ProblemCrusher</div>
