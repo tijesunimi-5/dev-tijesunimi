@@ -50,8 +50,8 @@ const AboutSection = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: 'top bottom',
-        end: 'top top',
+        start: 'top 90%', // Adjusted to start earlier for smoother snap sync
+        end: 'top 10%', // Adjusted to end when fully in view
         scrub: true,
       },
     });
@@ -83,7 +83,7 @@ const AboutSection = () => {
         ease: 'power2.in',
         scrollTrigger: {
           trigger: '#about',
-          start: 'top top',
+          start: 'top 20%', // Adjusted to start slightly after snap
           end: 'bottom top',
           scrub: true,
         },
@@ -104,7 +104,7 @@ const AboutSection = () => {
   }, [activeTab]);
 
   return (
-    <section ref={sectionRef} id="about" className="section h-screen px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start">
+    <section ref={sectionRef} id="about" className="section px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start">
       <div ref={col1Ref} className="col1">
         <h1 className="text-[#FAA037] text-4xl font-bold">Get to know me</h1>
         <p className="mt-3 md:text-xl lg:w-[400px] xl:w-[700px]">
