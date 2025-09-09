@@ -45,19 +45,19 @@ const AboutSection = () => {
   const displayCardRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    // Initial animation for the whole section on scroll
+    // Animation for the whole section on scroll in and out
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none"
+        start: "top 70%",
+        end: "30% 40%",
+        scrub: true,
       }
     })
     if (col1Ref.current) {
       tl.from(col1Ref.current.children, {
         opacity: 0,
         y: 50,
-        duration: 1,
         ease: "power3.out",
         stagger: 0.2
       });
@@ -65,7 +65,6 @@ const AboutSection = () => {
     tl.from(tabDisplayRef.current, {
       opacity: 0,
       y: 50,
-      duration: 1,
       ease: "power3.out"
     }, "-=0.8")
   }, [])
@@ -84,7 +83,7 @@ const AboutSection = () => {
   }, [activeTab])
 
   return (
-    <div ref={sectionRef} id='about' className='mt-20 px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start'>
+    <div ref={sectionRef} id='about' className='mt-20 px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start h-[60vh]'>
       <div ref={col1Ref} className="col1">
         <h1 className="text-[#FAA037] text-4xl font-bold">Get to know me</h1>
         <p className='mt-3 md:text-xl lg:w-[400px] xl:w-[700px]'>
