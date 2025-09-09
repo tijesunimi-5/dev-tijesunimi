@@ -79,7 +79,7 @@ const AboutSection = () => {
             activeContent && (
               <div className="mt-4 bg-[#A4795E] px-2 py-5 rounded">
                 <h1 className="text-3xl text-[#FAA037] font-bold">{activeContent.title}</h1>
-                <p>{activeContent.text}</p>
+                <p className='mt-4'>{activeContent.text}</p>
               </div>
             )
           }
