@@ -35,14 +35,11 @@ const AboutSection = () => {
   
   const activeContent = contentData.find((item) => item.id === activeTab) || contentData[0]
 
-  
-
-
   return (
-    <div id='about' className='mt-32 px-6 pb-10'>
+    <div id='about' className='mt-20 px-5 pb-10'>
       <h1 className="text-[#FAA037] text-4xl font-bold">Get to know me</h1>
       <p className='mt-3'>
-        Hey there! I'm a Fullstack development and Machine Learning enthusiast who thrives on crafting websites that are as adaptive as they are eye-catching. With a knack for stunning visuals and a passion for solving tough challenges, I turn ideas into seamless, user-loving experiences.
+        Hey there! I'm a Fullstack developer and Machine Learning enthusiast who thrives on crafting websites that are as adaptive as they are eye-catching. With a knack for stunning visuals and a passion for solving tough challenges, I turn ideas into seamless, user-loving experiences.
       </p>
 
       <div className="hash mt-3 grid grid-cols-2 gap-3">
@@ -88,6 +85,8 @@ const AboutSection = () => {
           }
         </div>
       </div>
+
+      
     </div>
   )
 }

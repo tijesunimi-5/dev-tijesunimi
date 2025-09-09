@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <section className="py-10 relative w-screen overflow-x-hidden">
       <TabSection />
-      <div id="hero" className="hero-section px-6 pt-28">
+      <div id="hero" className="hero-section h-[100vh] px-5 pt-28 ">
         <div className="avatar rounded-full">
           <img src="/avatar1.png" alt="" />
         </div>
@@ -26,41 +26,49 @@ export default function Home() {
               Responsive Design
             </div>
             <div className="bg-[#a4795e] py-1 px-3 rounded-2xl">
-              UI Development
+              Collaborator
             </div>
             <div className="bg-[#a4795e] py-1 px-2 rounded-2xl">
               +8
             </div>
           </div>
 
-          <div className="tech-stack flex gap-3 items-center mt-5">
-            <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <FaJs />
+          <div className="overflow-x-scroll">
+            <div className="tech-stack flex gap-3 items-center mt-5">
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <FaJs />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <BiLogoTypescript />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <FaPython />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <FaReact />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <RiNextjsFill />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <RiTailwindCssFill />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <SiMongodb />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <FaNode />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <SiScikitlearn />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <SiTensorflow  />
+              </div>
+              <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
+                <FaGithubSquare />
+              </div>
             </div>
-            <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <BiLogoTypescript />
-            </div>
-            <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <FaPython />
-            </div>
-            <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <FaReact />
-            </div>
-            <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <RiNextjsFill />
-            </div>
-            <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <RiTailwindCssFill />
-            </div>
-            {/* <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <SiMongodb />
-            </div> */}
-            <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
-              <FaNode />
-            </div>
-            {/* <SiScikitlearn className="bg-[#a4795e] py-1 px-2 rounded-2xl text-4xl" /> */}
-            {/* <SiTensorflow className="bg-[#a4795e] py-1 px-2 rounded-2xl text-4xl" /> */}
-            {/* <FaGithubSquare className="bg-[#a4795e] py-1 px-1 rounded-2xl text-4xl" /> */}
           </div>
         </div>
       </div>
