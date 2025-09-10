@@ -96,7 +96,7 @@ export default function Home() {
               <div className="bg-[#a4795e] py-1 px-2 rounded-2xl md:hidden">+8</div>
             </div>
 
-            <div className="overflow-x-scroll md:overflow-x-hidden rounded-2xl">
+            <div className="overflow-x-scroll md:overflow-x-hidden rounded-2xl scrollbar-hidden">
               <div className="tech-stack flex gap-3 items-center mt-5">
                 <div className="bg-[#a4795e] text-2xl py-2 px-2 rounded-3xl">
                   <FaJs />

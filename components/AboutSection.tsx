@@ -104,14 +104,14 @@ const AboutSection = () => {
   }, [activeTab]);
 
   return (
-    <section ref={sectionRef} id="about" className="section xl:h-[70vh] xl:pt-[100px] px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start">
+    <section ref={sectionRef} id="about" className="section xl:h-[70vh] xl:pt-[100px] px-5 pb-10 md:px-10 lg:flex lg:justify-between lg:items-start  lg:mx-10">
       <div ref={col1Ref} className="col1">
         <h1 className="text-[#FAA037] text-4xl font-bold">Get to know me</h1>
         <p className="mt-3 md:text-xl lg:w-[400px] xl:w-[700px]">
           Hey there! I'm a Fullstack developer and Machine Learning enthusiast who thrives on crafting websites that are as adaptive as they are eye-catching. With a knack for stunning visuals and a passion for solving tough challenges, I turn ideas into seamless, user-loving experiences.
         </p>
 
-        <div className="hash mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 w-[310px]">
+        <div className="hash mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 w-[310px] lg:w-[460px]">
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#StunningVisuals</div>
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#CodeWizard</div>
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#ProblemCrusher</div>
@@ -119,8 +119,8 @@ const AboutSection = () => {
       </div>
 
       <div ref={tabDisplayRef}>
-        <div className="about-card mt-10 overflow-x-scroll w-[320px] md:w-[500px] md:overflow-x-hidden lg:w-[400px] lg:mt-0 xl:w-[600px]">
-          <div className="tabs flex justify-between items-center w-[400px] md:w-full">
+        <div className="about-card mt-10 overflow-x-scroll scrollbar-hidden w-[320px] md:w-[500px] md:overflow-x-hidden lg:w-[400px] lg:mt-0  xl:w-[600px]">
+          <div className="tabs flex justify-between items-center w-[400px] md:w-full ">
             <div
               onClick={() => setActiveTab(1)}
               className={`${activeTab === 1 ? 'bg-[#FAA037] text-[#ffffff]' : 'bg-[#a4795e] text-[#FAA037]'} py-1 px-3 rounded-xl cursor-pointer`}
