@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import type { ReactElement } from 'react'
 import { DiJavascript } from 'react-icons/di'
 import { FaJs, FaNodeJs, FaPython } from 'react-icons/fa'
-import { RiCloseLine, RiNextjsLine, RiTailwindCssLine } from 'react-icons/ri'
+import { RiCloseLine, RiNextjsLine, RiTailwindCssLine, RiArrowRightLine } from 'react-icons/ri'
 import { SiHuggingface, SiMongodb, SiScikitlearn, SiTypescript } from 'react-icons/si'
 import Link from 'next/link'
 import { gsap } from 'gsap'
@@ -245,18 +245,32 @@ const ProjectSection = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="project-card cursor-pointer group relative rounded-xl overflow-hidden shadow-lg relative"
-              onClick={() => setSelectedProject(project)}
+              className="project-card bg-[#a4795e] rounded-lg group cursor-pointer"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                <p className="text-white font-bold text-lg">{project.title}</p>
+              <div className="overflow-hidden rounded-tl-lg rounded-tr-lg shadow-lg">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                />
               </div>
-              <div className='overlay top-0 left-0 w-full h-full'></div>
+              <h3 className="mt-4 text-2xl font-semibold px-4">{project.title}</h3>
+              <button
+                onClick={() => setSelectedProject(project)}
+                className="mt-2 px-4 text-[#FAA037] text-xl flex items-center gap-1 hover:gap-2 transition-all"
+              >
+                Know More
+              </button>
+
+              <div className="px-4 py-4 flex flex-wrap">
+                {
+                  project.features.map((feature, idx) => (
+                    <span key={idx} className="inline-block bg-[#97694D] text-[#ffffff] text-sm px-2 py-1 m-1 rounded-full">
+                      {feature}
+                    </span>
+                  ))
+                }
+              </div>
             </div>
           ))}
         </div>
