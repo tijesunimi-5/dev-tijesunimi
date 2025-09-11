@@ -217,7 +217,7 @@ const ProjectSection = () => {
 
 
   return (
-    <section id="projects" className="mt-10 px-5 pb-20">
+    <section id="projects" className="mt-10 px-5 pb-20 lg:hidden">
       <div>
         <h1 className="text-[#FAA037] text-3xl">Projects</h1>
         <div className="tab flex gap-5 mt-4 flex-wrap">

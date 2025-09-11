@@ -166,12 +166,12 @@ export default function Home() {
       <AboutSection />
 
       <ProjectSection />
+      <Projects />
 
       <Skillset />
 
       <ContactSection />
 
-      <Projects />
     </section>
   );
 }
