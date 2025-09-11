@@ -12,6 +12,7 @@ import {useEffect} from 'react'
 import ProjectSection from "@/components/ProjectSection";
 import Skillset from "@/components/Skillset";
 import ContactSection from "@/components/ContactSection";
+import Projects from "@/components/Projects";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -169,6 +170,8 @@ export default function Home() {
       <Skillset />
 
       <ContactSection />
+
+      <Projects />
     </section>
   );
 }
