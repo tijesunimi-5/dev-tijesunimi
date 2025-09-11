@@ -186,6 +186,9 @@ const ProjectSection = () => {
   };
 
   useEffect(() => {
+    // kill old triggers before re-creating
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
     gsap.utils.toArray<HTMLElement>('.project-card').forEach((card) => {
       gsap.fromTo(
         card,
@@ -194,6 +197,7 @@ const ProjectSection = () => {
           opacity: 1,
           y: 0,
           duration: 0.8,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: card,
             start: 'top 85%',
@@ -201,10 +205,16 @@ const ProjectSection = () => {
             toggleActions: 'play none none reverse',
             markers: false,
           },
-        },
+        }
       )
-    })
-  }, [filteredProjects])
+    });
+
+    return () => {
+      // cleanup when component unmounts or projects change
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [filteredProjects]);
+
 
   return (
     <section id="projects" className="mt-10 px-5 pb-20">
@@ -245,6 +255,7 @@ const ProjectSection = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
+              onClick={() => setSelectedProject(project)}
               className="project-card bg-[#a4795e] rounded-lg group cursor-pointer"
             >
               <div className="overflow-hidden rounded-tl-lg rounded-tr-lg shadow-lg">
@@ -255,17 +266,19 @@ const ProjectSection = () => {
                 />
               </div>
               <h3 className="mt-4 text-2xl font-semibold px-4">{project.title}</h3>
+              <p className='lg:h-[80px] h-[70px] my-5 px-4 overflow-hidden text-ellipsis line-clamp-3 lg:text-lg'>{project.description}</p>
               <button
                 onClick={() => setSelectedProject(project)}
-                className="mt-2 px-4 text-[#FAA037] text-xl flex items-center gap-1 hover:gap-2 transition-all"
+                className="mt-2 px-4 text-[#FAA037] text-xl flex items-center gap-1 hover:gap-2 transition-all font-bold tracking-wide"
               >
                 Know More
+                <RiArrowRightLine />
               </button>
 
               <div className="px-4 py-4 flex flex-wrap">
                 {
                   project.features.map((feature, idx) => (
-                    <span key={idx} className="inline-block bg-[#97694D] text-[#ffffff] text-sm px-2 py-1 m-1 rounded-full">
+                    <span key={idx} className="inline-block bg-[#97694D] text-[#ffffff] text-sm lg:text-lg px-2 py-1 m-1 rounded-full">
                       {feature}
                     </span>
                   ))
