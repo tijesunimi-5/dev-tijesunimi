@@ -185,35 +185,35 @@ const ProjectSection = () => {
     }
   };
 
-  useEffect(() => {
-    // kill old triggers before re-creating
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  // useEffect(() => {
+  //   // kill old triggers before re-creating
+  //   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
-    gsap.utils.toArray<HTMLElement>('.project-card').forEach((card) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            end: 'bottom 15%',
-            toggleActions: 'play none none reverse',
-            markers: false,
-          },
-        }
-      )
-    });
+  //   gsap.utils.toArray<HTMLElement>('.project-card').forEach((card) => {
+  //     gsap.fromTo(
+  //       card,
+  //       { opacity: 0, y: 50 },
+  //       {
+  //         opacity: 1,
+  //         y: 0,
+  //         duration: 0.8,
+  //         ease: 'power3.out',
+  //         scrollTrigger: {
+  //           trigger: card,
+  //           start: 'top 85%',
+  //           end: 'bottom 15%',
+  //           toggleActions: 'play none none reverse',
+  //           markers: false,
+  //         },
+  //       }
+  //     )
+  //   });
 
-    return () => {
-      // cleanup when component unmounts or projects change
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, [filteredProjects]);
+  //   return () => {
+  //     // cleanup when component unmounts or projects change
+  //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  //   };
+  // }, [filteredProjects]);
 
 
   return (
