@@ -13,6 +13,7 @@ import ProjectSection from "@/components/ProjectSection";
 import Skillset from "@/components/Skillset";
 import ContactSection from "@/components/ContactSection";
 import Projects from "@/components/Projects";
+import PageTracker from "../components/PageTracker"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -78,6 +79,7 @@ export default function Home() {
 
   return (
     <section className="py-10 relative w-screen overflow-x-hidden">
+      <PageTracker />
       <TabSection />
       <div id="hero" className="hero-section h-[90vh] px-5 pt-28 md:px-10 md:h-[90vh] lg:flex lg:justify-between lg:items-center xl:px-32">
         <div className="col1">

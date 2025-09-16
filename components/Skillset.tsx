@@ -23,72 +23,72 @@ const Skillset = () => {
     },
     {
       name: 'JavaScript',
-      level: 'Intermediate',
+      level: 'Advanced',
       description: 'Skilled in writing clean and efficient JavaScript code.',
-      rating: 78,
+      rating: 70,
       icon: <DiJavascript className='inline' />
     },
     {
       name: 'React',
       level: 'Intermediate',
       description: 'Experienced in building dynamic user interfaces with React.',
-      rating: 75,
+      rating: 65,
       icon: <RiReactjsLine className='inline' />
     },
     {
       name: 'TypeScript',
       level: 'Intermediate',
       description: 'Proficient in using TypeScript for type-safe JavaScript development.',
-      rating: 70,
+      rating: 62,
       icon: <SiTypescript className='inline' />
     },
     {
       name: 'Next.js',
       level: 'Intermediate',
       description: 'Experienced in building server-rendered applications with Next.js.',
-      rating: 82,
+      rating: 67,
       icon: <RiNextjsLine className='inline' />
     },
     {
       name: 'Tailwind CSS',
-      level: 'Intermediate',
+      level: 'Advanced',
       description: 'Skilled in using Tailwind CSS for utility-first styling.',
-      rating: 85,
+      rating: 69,
       icon: <RiTailwindCssLine className='inline' />
     },
     {
       name: 'Node.js',
-      level: 'beginner',
+      level: 'Beginner',
       description: 'Familiar with building server-side applications using Node.js.',
-      rating: 50,
+      rating: 40,
       icon: <FaNodeJs className='inline' />
     },
     {
       name: "Express.js",
-      level: 'beginner',
+      level: 'Beginner',
       description: 'Basic understanding of building web applications with Express.js.',
-      rating: 50,
+      rating: 40,
       icon: null
     },
     {
       name: 'MongoDB',
-      level: 'intermediate',
+      level: 'Intermediate',
       description: 'Familiar with NoSQL databases and basic CRUD operations in MongoDB.',
       icon: <DiMongodb className='inline' />,
-      rating: 40,
+      rating: 61,
     },
     {
       name: 'Python',
-      level: 'beginner',
+      level: 'Beginner',
       description: 'Basic knowledge of Python programming and scripting.',
-      rating: 50,
+      rating: 40,
       icon: <FaPython className='inline' />
     },
     {
       name: 'scikit-learn',
-      level: 'beginner',
+      level: 'Beginner',
       description: 'Familiar with machine learning concepts and basic usage of scikit-learn library.',
-      rating: 50,
+      rating: 40,
       icon: <SiScikitlearn className='inline' />
     },
   ]
