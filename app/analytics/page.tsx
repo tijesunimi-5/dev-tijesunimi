@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -12,10 +13,8 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-// Define the interface for analytics data
 interface AnalyticsData {
   deviceId: string;
   page: string;
@@ -24,6 +23,12 @@ interface AnalyticsData {
 }
 
 export default function AnalyticsPage() {
+  const searchParams = useSearchParams();
+  const key = searchParams.get('key');
+  if (key !== 'secret') {
+    return <div className="text-center p-4 text-red-500">Access denied. Please provide the correct key.</div>;
+  }
+
   const [analytics, setAnalytics] = useState<AnalyticsData[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -65,6 +70,8 @@ export default function AnalyticsPage() {
         label: 'Page Visits',
         data: Object.values(pageVisits),
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
       },
     ],
   };
@@ -78,22 +85,67 @@ export default function AnalyticsPage() {
           (page) => avgTimeSpent[page].total / avgTimeSpent[page].count
         ),
         backgroundColor: 'rgba(153, 102, 255, 0.6)',
+        borderColor: 'rgba(153, 102, 255, 1)',
+        borderWidth: 1,
       },
     ],
   };
 
-  if (loading) return <div>Loading analytics...</div>;
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top' as const },
+      title: { display: true, text: '' },
+    },
+  };
+
+  if (loading) return <div className="text-center p-4">Loading analytics...</div>;
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Analytics Dashboard</h1>
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Page Visits</h2>
-        <Bar data={chartDataVisits} options={{ responsive: true }} />
+    <div className="container mx-auto p-6 max-w-4xl">
+      <h1 className="text-3xl font-bold mb-6 text-center">Portfolio Analytics</h1>
+
+      {/* Charts */}
+      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 className="text-xl font-semibold mb-4">Page Visits</h2>
+        <Bar data={chartDataVisits} options={{ ...chartOptions, plugins: { ...chartOptions.plugins, title: { ...chartOptions.plugins.title, text: 'Number of Visits per Page' } } }} />
       </div>
-      <div>
-        <h2 className="text-xl font-semibold mb-2">Average Time Spent</h2>
-        <Bar data={chartDataTime} options={{ responsive: true }} />
+      <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 className="text-xl font-semibold mb-4">Average Time Spent</h2>
+        <Bar data={chartDataTime} options={{ ...chartOptions, plugins: { ...chartOptions.plugins, title: { ...chartOptions.plugins.title, text: 'Average Time Spent per Page (seconds)' } } }} />
+      </div>
+
+      {/* Raw Data Table */}
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold mb-4">Visit Details</h2>
+        {analytics.length === 0 ? (
+          <p className="text-center text-gray-500">No visit data available.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full border-collapse">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="border px-4 py-2 text-left">Device ID</th>
+                  <th className="border px-4 py-2 text-left">Page</th>
+                  <th className="border px-4 py-2 text-left">Visit Time</th>
+                  <th className="border px-4 py-2 text-left">Time Spent (seconds)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {analytics.map((entry, index) => (
+                  <tr key={index} className="even:bg-gray-50">
+                    <td className="border px-4 py-2">{entry.deviceId}</td>
+                    <td className="border px-4 py-2">{entry.page}</td>
+                    <td className="border px-4 py-2">
+                      {new Date(entry.visitTime).toLocaleString()}
+                    </td>
+                    <td className="border px-4 py-2">{entry.timeSpent}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
