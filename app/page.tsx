@@ -96,7 +96,7 @@ export default function Home() {
               <div className="bg-[#a4795e] py-1 px-3 rounded-2xl">Interactive</div>
               <div className="bg-[#a4795e] py-1 px-3 rounded-2xl hidden md:block">UI Development</div>
               <div className="bg-[#a4795e] py-1 px-3 rounded-2xl hidden md:block">Accessibilty</div>
-              <div className="bg-[#a4795e] py-1 px-2 rounded-2xl md:hidden">+8</div>
+              <div className="bg-[#a4795e] py-1 px-2 rounded-2xl md:hidden">+2</div>
             </div>
 
             <div className="overflow-x-scroll md:overflow-x-hidden rounded-2xl scrollbar-hidden">
@@ -142,7 +142,7 @@ export default function Home() {
         <div className="hidden lg:block relative lg:mr-20">
           <div className="lin absolute top-[-120px] right-[80px] flex items-center float">
             <img src="/Union.png" alt="bg for LinkedIn" className="w-[60px]" />
-            <Link href="/">
+            <Link href="https://www.linkedin.com/in/idowu-tijesunimi-189492294">
               <img src="/linkedin.png" className="absolute text-2xl right-[18px] top-3" alt="LinkedIn" />
             </Link>
           </div>
@@ -150,13 +150,13 @@ export default function Home() {
           <img src="/Candle.png" alt="candle" className="candle-img" />
 
           <div className="lin absolute top-[-60px] right-[0px] flex justify-center items-center bg-[#a4795e] rounded-full z-20 w-[60px] h-[60px] float2">
-            <Link href="/">
+            <Link href="https://x.com/codelight001">
               <FaTwitter className="text-2xl text-white" />
             </Link>
           </div>
 
           <div className="lin absolute top-[-60px] left-[0px] flex justify-center items-center bg-[#a4795e] rounded-full z-20 w-[60px] h-[60px] float2">
-            <Link href="/">
+            <Link href="mailto:tijesunimiidowu16@gmail.com">
               <img src="/mail.png" className="w-[24px] text-white" alt="Email" />
             </Link>
           </div>

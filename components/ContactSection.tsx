@@ -53,19 +53,19 @@ const ContactSection = () => {
         </div>
 
         <div className='w-full bg-[#a4795e] mt-5 rounded flex items-center justify-center gap-10 py-5 px-5 shadow lg:w-[600px] lg:mr-10 lg:gap-16'>
-          <Link href={''} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
+          <Link href={'https://www.linkedin.com/in/idowu-tijesunimi-189492294'} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
             <FaLinkedin />
           </Link>
 
-          <Link href={''} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
+          <Link href={"https://wa.me/+2347018268171?text=I'm%20interested%20in%20your%20service"} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
             <FaWhatsapp />
           </Link>
 
-          <Link href={''} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
+          <Link href={'mailto:tijesunimiidowu16@gmail.com'} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
             <MdEmail />
           </Link>
           
-          <Link href={''} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
+          <Link href={'https://x.com/codelight001'} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
             <FaTwitter />
           </Link>
         </div>
