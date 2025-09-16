@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 
 interface AnalyticsData {
@@ -12,7 +12,8 @@ interface AnalyticsData {
 }
 
 const PageTracker: React.FC = () => {
-  const router = useRouter();
+  const pathname = usePathname();
+  const visitDataRef = useRef<AnalyticsData | null>(null);
 
   useEffect(() => {
     let deviceId = localStorage.getItem('deviceId');
@@ -21,26 +22,24 @@ const PageTracker: React.FC = () => {
       localStorage.setItem('deviceId', deviceId);
     }
 
-    let visitData: AnalyticsData | null = null;
-
     const startTracking = () => {
-      const page = window.location.pathname;
+      const page = pathname;
       const visitTime = new Date().toISOString();
-      visitData = { deviceId, page, visitTime, timeSpent: 0 };
-      localStorage.setItem('pageVisit', JSON.stringify(visitData));
+      visitDataRef.current = { deviceId, page, visitTime, timeSpent: 0 };
+      localStorage.setItem('pageVisit', JSON.stringify(visitDataRef.current));
     };
 
     const endTracking = async () => {
-      if (!visitData) return;
+      if (!visitDataRef.current) return;
       const endTime = new Date();
-      const startTime = new Date(visitData.visitTime);
-      visitData.timeSpent = Math.round((endTime.getTime() - startTime.getTime()) / 1000);
+      const startTime = new Date(visitDataRef.current.visitTime);
+      visitDataRef.current.timeSpent = Math.round((endTime.getTime() - startTime.getTime()) / 1000);
 
       try {
         const response = await fetch('/api/track', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(visitData),
+          body: JSON.stringify(visitDataRef.current),
         });
         console.log('Track API response:', response.status); // Debug log
       } catch (error) {
@@ -49,21 +48,18 @@ const PageTracker: React.FC = () => {
       localStorage.removeItem('pageVisit');
     };
 
+    // Start tracking on pathname change
     startTracking();
 
-    const handleRouteChange = () => {
-      endTracking();
-      startTracking();
-    };
-
-    router.events.on('routeChangeStart', handleRouteChange);
+    // End tracking on page exit
     window.addEventListener('beforeunload', endTracking);
 
+    // End tracking and start new tracking on pathname change
     return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
+      endTracking();
       window.removeEventListener('beforeunload', endTracking);
     };
-  }, [router]);
+  }, [pathname]); // Re-run effect when pathname changes
 
   return null;
 };
