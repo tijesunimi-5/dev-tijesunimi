@@ -125,18 +125,18 @@ export default function AnalyticsPage() {
             <table className="min-w-full border-collapse">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="border px-4 py-2 text-left">Device ID</th>
-                  <th className="border px-4 py-2 text-left">Page</th>
-                  <th className="border px-4 py-2 text-left">Visit Time</th>
-                  <th className="border px-4 py-2 text-left">Time Spent (seconds)</th>
+                  <th className="border px-4 py-2 text-left text-black">Device ID</th>
+                  <th className="border px-4 py-2 text-left text-black">Page</th>
+                  <th className="border px-4 py-2 text-left text-black">Visit Time</th>
+                  <th className="border px-4 py-2 text-left text-black">Time Spent (seconds)</th>
                 </tr>
               </thead>
               <tbody>
                 {analytics.map((entry, index) => (
                   <tr key={index} className="even:bg-gray-50">
-                    <td className="border px-4 py-2">{entry.deviceId}</td>
-                    <td className="border px-4 py-2">{entry.page}</td>
-                    <td className="border px-4 py-2">
+                    <td className="border px-4 py-2 text-black">{entry.deviceId}</td>
+                    <td className="border px-4 py-2 text-black">{entry.page}</td>
+                    <td className="border px-4 py-2 text-black">
                       {new Date(entry.visitTime).toLocaleString()}
                     </td>
                     <td className="border px-4 py-2">{entry.timeSpent}</td>
