@@ -1,72 +1,69 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 
-// Define the interface for analytics data
 interface AnalyticsData {
-  deviceId: string; // Added device ID
+  deviceId: string;
   page: string;
   visitTime: string;
-  timeSpent: number; // in seconds
+  timeSpent: number;
 }
 
 const PageTracker: React.FC = () => {
+  const router = useRouter();
+
   useEffect(() => {
-    // Get or generate a unique device ID
     let deviceId = localStorage.getItem('deviceId');
     if (!deviceId) {
       deviceId = uuidv4();
       localStorage.setItem('deviceId', deviceId);
     }
 
-    // Get current page URL and timestamp
-    const page = window.location.pathname;
-    const visitTime = new Date().toISOString();
+    let visitData: AnalyticsData | null = null;
 
-    // Store initial visit data in localStorage
-    const visitData: AnalyticsData = {
-      deviceId,
-      page,
-      visitTime,
-      timeSpent: 0,
+    const startTracking = () => {
+      const page = window.location.pathname;
+      const visitTime = new Date().toISOString();
+      visitData = { deviceId, page, visitTime, timeSpent: 0 };
+      localStorage.setItem('pageVisit', JSON.stringify(visitData));
     };
-    localStorage.setItem('pageVisit', JSON.stringify(visitData));
 
-    // Function to calculate time spent and send data
-    const handleBeforeUnload = async () => {
+    const endTracking = async () => {
+      if (!visitData) return;
       const endTime = new Date();
       const startTime = new Date(visitData.visitTime);
-      const timeSpent = Math.round((endTime.getTime() - startTime.getTime()) / 1000); // Time in seconds
-
-      // Update visit data with time spent
-      visitData.timeSpent = timeSpent;
+      visitData.timeSpent = Math.round((endTime.getTime() - startTime.getTime()) / 1000);
 
       try {
-        // Send data to API
-        await fetch('/api/track', {
+        const response = await fetch('/api/track', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(visitData),
         });
+        console.log('Track API response:', response.status); // Debug log
       } catch (error) {
         console.error('Error sending analytics:', error);
       }
-
-      // Clear page visit data after sending
       localStorage.removeItem('pageVisit');
     };
 
-    // Add event listener for when the user leaves the page
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    startTracking();
 
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+    const handleRouteChange = () => {
+      endTracking();
+      startTracking();
     };
-  }, []);
+
+    router.events.on('routeChangeStart', handleRouteChange);
+    window.addEventListener('beforeunload', endTracking);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+      window.removeEventListener('beforeunload', endTracking);
+    };
+  }, [router]);
 
   return null;
 };
