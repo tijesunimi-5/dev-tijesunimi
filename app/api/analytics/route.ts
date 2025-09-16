@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
-// Define the interface for analytics data
 interface AnalyticsData {
   deviceId: string;
   page: string;
@@ -10,10 +9,8 @@ interface AnalyticsData {
   timeSpent: number;
 }
 
-// Path to the analytics JSON file
-const filePath = path.join(process.cwd(), 'analytics.json');
+const filePath = path.join('/tmp', 'analytics.json');
 
-// GET handler to retrieve analytics data
 export async function GET(req: NextRequest) {
   try {
     let analytics: AnalyticsData[] = [];
@@ -21,7 +18,7 @@ export async function GET(req: NextRequest) {
       const fileData = await fs.readFile(filePath, 'utf-8');
       analytics = JSON.parse(fileData);
     } catch (error) {
-      // File doesn't exist, return empty array
+      console.log('No analytics file found, returning empty array');
       analytics = [];
     }
     return NextResponse.json(analytics, { status: 200 });
