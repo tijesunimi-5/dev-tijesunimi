@@ -140,7 +140,7 @@ export default function Home() {
         </div>
 
         <div className="hidden lg:block relative lg:mr-20">
-          <div className="lin absolute top-[-120px] right-[80px] flex items-center">
+          <div className="lin absolute top-[-120px] right-[80px] flex items-center float">
             <img src="/Union.png" alt="bg for LinkedIn" className="w-[60px]" />
             <Link href="/">
               <img src="/linkedin.png" className="absolute text-2xl right-[18px] top-3" alt="LinkedIn" />
@@ -149,13 +149,13 @@ export default function Home() {
 
           <img src="/Candle.png" alt="candle" className="candle-img" />
 
-          <div className="lin absolute top-[-60px] right-[0px] flex justify-center items-center bg-[#a4795e] rounded-full z-20 w-[60px] h-[60px]">
+          <div className="lin absolute top-[-60px] right-[0px] flex justify-center items-center bg-[#a4795e] rounded-full z-20 w-[60px] h-[60px] float2">
             <Link href="/">
               <FaTwitter className="text-2xl text-white" />
             </Link>
           </div>
 
-          <div className="lin absolute top-[-60px] left-[0px] flex justify-center items-center bg-[#a4795e] rounded-full z-20 w-[60px] h-[60px]">
+          <div className="lin absolute top-[-60px] left-[0px] flex justify-center items-center bg-[#a4795e] rounded-full z-20 w-[60px] h-[60px] float2">
             <Link href="/">
               <img src="/mail.png" className="w-[24px] text-white" alt="Email" />
             </Link>

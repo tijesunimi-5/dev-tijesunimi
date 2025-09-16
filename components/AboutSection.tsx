@@ -112,7 +112,7 @@ const AboutSection = () => {
         </p>
 
         <div className="hash mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 w-[310px] lg:w-[460px]">
-          <div className="bg-[#C] text-[#FDE137] py-1 px-3 rounded-2xl">#StunningVisuals</div>
+          <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#StunningVisuals</div>
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#CodeWizard</div>
           <div className="bg-[#a4795e] text-[#FDE137] py-1 px-3 rounded-2xl">#ProblemCrusher</div>
         </div>

@@ -82,6 +82,50 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.73);
 }
 
+
+/* Floatation */
+.float{
+  animation: float 5s ease infinite;
+}
+@keyframes float {
+  0% {
+    margin-top: 5px;
+  }
+  25% {
+    margin-top: 10px;
+  }
+  50%{
+    margin-top: 15px
+  }
+  70%{
+    margin-top: 5px
+  }
+  100% {
+    margin-top: 5px
+  }
+}
+
+.float2 {
+  animation: float2 5s ease infinite;
+}
+@keyframes float2 {
+  0% {
+    margin-top: 7px;
+  }
+  25% {
+    margin-top: 5px;
+  }
+  50%{
+    margin-top: 10px
+  }
+  70%{
+    margin-top: 0px
+  }
+  100% {
+    margin-top: 5px
+  }
+}
+
 /* 
 #FDE137
 */

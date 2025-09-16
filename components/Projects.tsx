@@ -149,6 +149,7 @@ const Projects = () => {
   return (
     <section className="h-screen w-full sticky top-0 lg:flex items-center justify-center hidden flex-col mt-20">
       <h1 className="text-[#FAA037] text-3xl font-bold">Projects</h1>
+      <p className='italic'>Swipe to view all projects</p>
       <div
         ref={containerRef}
         className="flex overflow-x-scroll scrollbar-hidden snap-x snap-mandatory scroll-smooth h-full w-full rounded-2xl"
