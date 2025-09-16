@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
-// Define the interface for the request body
 interface AnalyticsData {
   deviceId: string;
   page: string;
@@ -10,28 +9,23 @@ interface AnalyticsData {
   timeSpent: number;
 }
 
-// Path to the analytics JSON file
-const filePath = path.join(process.cwd(), 'analytics.json');
+const filePath = path.join('/tmp', 'analytics.json');
 
-// POST handler for tracking data
 export async function POST(req: NextRequest) {
   try {
     const data: AnalyticsData = await req.json();
+    console.log('Received analytics data:', data); // Debug log
 
-    // Read existing analytics data
     let analytics: AnalyticsData[] = [];
     try {
       const fileData = await fs.readFile(filePath, 'utf-8');
       analytics = JSON.parse(fileData);
     } catch (error) {
-      // File doesn't exist, initialize empty array (file will be created on write)
+      console.log('No analytics file found, creating new one');
       analytics = [];
     }
 
-    // Append new data
     analytics.push(data);
-
-    // Write updated analytics to file
     await fs.writeFile(filePath, JSON.stringify(analytics, null, 2));
 
     return NextResponse.json({ message: 'Analytics recorded' }, { status: 200 });
