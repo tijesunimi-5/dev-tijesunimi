@@ -1,126 +1,142 @@
 'use client'
-import React from 'react'
-import { DiJavascript, DiMongodb } from 'react-icons/di'
-import { FaCss3, FaHtml5, FaNodeJs, FaPython } from 'react-icons/fa'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { FaJs, FaPython } from 'react-icons/fa'
 import { RiNextjsLine, RiReactjsLine, RiTailwindCssLine } from 'react-icons/ri'
-import { SiScikitlearn, SiTypescript } from 'react-icons/si'
+import { SiScikitlearn, SiTypescript, SiMongodb, SiExpress, SiPostgresql } from 'react-icons/si'
+
+gsap.registerPlugin(ScrollTrigger);
+
+const skills = {
+  frontend: [
+    { name: 'React / Next.js', level: 'Advanced', icon: <RiNextjsLine />, rating: 85 },
+    { name: 'TypeScript', level: 'Advanced', icon: <SiTypescript />, rating: 80 },
+    { name: 'Tailwind CSS', level: 'Expert', icon: <RiTailwindCssLine />, rating: 90 },
+    { name: 'GSAP / Motion', level: 'Intermediate', icon: <FaJs />, rating: 75 },
+  ],
+  backend: [
+    { name: 'Node.js / Express', level: 'Building', icon: <SiExpress />, rating: 60 },
+    { name: 'PostgreSQL', level: 'Learning', icon: <SiPostgresql />, rating: 55 },
+    { name: 'MongoDB', level: 'Intermediate', icon: <SiMongodb />, rating: 70 },
+  ],
+  ai_data: [
+    { name: 'Python (ML)', level: 'Core', icon: <FaPython />, rating: 75 },
+    { name: 'NLP & Transformers', level: 'Learning', icon: <SiScikitlearn />, rating: 50 },
+    { name: 'Predictive Modeling', level: 'In-Progress', icon: null, rating: 60 },
+  ]
+};
 
 const Skillset = () => {
-  const skills = [
-    {
-      name: 'HTML',
-      level: 'Advanced',
-      description: 'Proficient in creating semantic and accessible HTML structures.',
-      rating: 90,
-      icon: <FaHtml5 className='inline' />
-    },
-    {
-      name: 'CSS',
-      level: 'Advanced',
-      description: 'Experienced in responsive design and visually appealing interface.',
-      rating: 80,
-      icon: <FaCss3 className='inline' />
-    },
-    {
-      name: 'JavaScript',
-      level: 'Advanced',
-      description: 'Skilled in writing clean and efficient JavaScript code.',
-      rating: 70,
-      icon: <DiJavascript className='inline' />
-    },
-    {
-      name: 'React',
-      level: 'Intermediate',
-      description: 'Experienced in building dynamic user interfaces with React.',
-      rating: 65,
-      icon: <RiReactjsLine className='inline' />
-    },
-    {
-      name: 'TypeScript',
-      level: 'Intermediate',
-      description: 'Proficient in using TypeScript for type-safe JavaScript development.',
-      rating: 62,
-      icon: <SiTypescript className='inline' />
-    },
-    {
-      name: 'Next.js',
-      level: 'Intermediate',
-      description: 'Experienced in building server-rendered applications with Next.js.',
-      rating: 67,
-      icon: <RiNextjsLine className='inline' />
-    },
-    {
-      name: 'Tailwind CSS',
-      level: 'Advanced',
-      description: 'Skilled in using Tailwind CSS for utility-first styling.',
-      rating: 69,
-      icon: <RiTailwindCssLine className='inline' />
-    },
-    {
-      name: 'Node.js',
-      level: 'Beginner',
-      description: 'Familiar with building server-side applications using Node.js.',
-      rating: 40,
-      icon: <FaNodeJs className='inline' />
-    },
-    {
-      name: "Express.js",
-      level: 'Beginner',
-      description: 'Basic understanding of building web applications with Express.js.',
-      rating: 40,
-      icon: null
-    },
-    {
-      name: 'MongoDB',
-      level: 'Intermediate',
-      description: 'Familiar with NoSQL databases and basic CRUD operations in MongoDB.',
-      icon: <DiMongodb className='inline' />,
-      rating: 61,
-    },
-    {
-      name: 'Python',
-      level: 'Beginner',
-      description: 'Basic knowledge of Python programming and scripting.',
-      rating: 40,
-      icon: <FaPython className='inline' />
-    },
-    {
-      name: 'scikit-learn',
-      level: 'Beginner',
-      description: 'Familiar with machine learning concepts and basic usage of scikit-learn library.',
-      rating: 40,
-      icon: <SiScikitlearn className='inline' />
-    },
-  ]
-  return (
-    <section className='skillset px-5'>
-      <div>
-        <h1 className='text-2xl font-bold tracking-wide'>Skill Sets</h1>
+  const containerRef = useRef<HTMLDivElement>(null);
 
-        <div className=" overflow-x-scroll gap-5 py-5 scrollbar-hidden">
-          <div className="w-[3900px] flex gap-5">
-            {skills.map((skill, index) => (
-              <div key={index} className="skill-card bg-[#a4795e] px-5 rounded-2xl flex flex-col gap-3 w-[300px] lg:w-[350px] pb-2">
-                <h1 className="skill-icon text-2xl font-bold text-[#ffffff] inline pt-2">
-                  {skill.icon} - {skill.name}
-                </h1>
-                <p className='mt-[-13px]'>{skill.level}</p>
-                <hr className='border border-[#FAA037] mt-[-7px]' />
-                <p className='text-lg'><b className='text-[#FDE137]'>
-                  Experience:</b> {skill.description}
-                </p>
-                <div className="rating rounded-2xl h-2 w-full bg-[#FAA037] relative overflow-hidden">
-                  <div style={{ width: `${skill.rating}%` }} className={`absolute left-0  bg-white rounded-2xl top-0 bottom-0`}></div>
-                </div>
-                {skill.rating}%
-              </div>
+  useEffect(() => {
+    // Kill existing triggers to prevent duplicates on re-render
+    ScrollTrigger.refresh();
+
+    const ctx = gsap.context(() => {
+      // Set initial state explicitly to avoid "invisible" lock
+      gsap.set(".skill-category", { opacity: 0, y: 30 });
+
+      gsap.to(".skill-category", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%", // Starts earlier to ensure user sees it
+          toggleActions: "play none none none", // Ensures it stays visible once triggered
+        }
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} id='skill' className="py-24 px-6 md:px-20 lg:px-32 bg-transparent relative overflow-hidden">
+      {/* Ambient Glow behind the AI section */}
+      <div className="absolute right-[-10%] bottom-[-10%] w-[400px] h-[400px] bg-[#97694d]/10 blur-[120px] rounded-full -z-10" />
+
+      <div className="mb-16">
+        <h2 className="text-sm uppercase tracking-[0.5em] text-[#97694d] font-bold mb-4">Technical Arsenal</h2>
+        <h3 className="text-4xl md:text-5xl font-black text-white">
+          Powering the <span className="text-white/30 italic">Architecture.</span>
+        </h3>
+      </div>
+
+      <div className="grid lg:grid-cols-12 gap-8">
+        {/* Frontend Pillar */}
+        <div className="skill-category lg:col-span-5 bg-white/5 border border-white/10 rounded-[2.5rem] p-10 hover:border-[#97694d]/40 transition-all duration-500 shadow-2xl">
+          <h4 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#97694d]" /> Frontend Systems
+          </h4>
+          <div className="space-y-8">
+            {skills.frontend.map((skill, i) => (
+              <SkillItem key={i} {...skill} />
             ))}
           </div>
+        </div>
 
+        {/* Backend & AI Pillars */}
+        <div className="lg:col-span-7 flex flex-col gap-8">
+          <div className="skill-category bg-white/5 border border-white/20 rounded-[2.5rem] p-10 flex-1 hover:border-[#97694d]/60 transition-all duration-500">
+            <h4 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-[#97694d]" /> Backend Infrastructure
+            </h4>
+            <div className="grid md:grid-cols-2 gap-8">
+              {skills.backend.map((skill, i) => (
+                <SkillItem key={i} {...skill} />
+              ))}
+            </div>
+          </div>
+
+          <div className="skill-category bg-white/5 border border-[#97694d]/40 rounded-[2.5rem] p-10 flex-1 hover:border-[#97694d] transition-all duration-500 shadow-[inset_0_0_20px_rgba(151,105,77,0.05)]">
+            <h4 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-[#97694d] animate-pulse" /> AI & Machine Learning
+            </h4>
+            <div className="grid md:grid-cols-2 gap-8">
+              {skills.ai_data.map((skill, i) => (
+                <SkillItem key={i} {...skill} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-export default Skillset
+const SkillItem = ({ name, icon, level, rating }: any) => {
+  const isLearning = level === 'Learning' || level === 'In-Progress';
+
+  return (
+    <div className="group cursor-default">
+      <div className="flex justify-between items-center mb-3">
+        <div className="flex items-center gap-3">
+          <span className="text-2xl text-[#97694d] group-hover:scale-110 transition-transform duration-300">
+            {icon || <div className="w-6 h-6 border border-[#97694d]/40 rounded-sm" />}
+          </span>
+          <span className="font-bold text-white/80 text-sm tracking-wide uppercase group-hover:text-white transition-colors">
+            {name}
+          </span>
+        </div>
+
+        <span className={`text-[9px] px-2 py-0.5 rounded-full border border-[#97694d]/40 font-bold text-[#97694d] uppercase tracking-widest ${isLearning ? 'animate-pulse bg-[#97694d]/10' : ''}`}>
+          {level}
+        </span>
+      </div>
+
+      <div className="h-[2px] w-full bg-white/5 relative overflow-hidden">
+        <div
+          className="absolute left-0 top-0 h-full bg-[#97694d] transition-all duration-1000 ease-out shadow-[0_0_8px_#97694d]"
+          style={{ width: `${rating}%` }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Skillset;

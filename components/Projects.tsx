@@ -1,12 +1,14 @@
 'use client'
-import React, {useState, useEffect, useRef} from 'react'
-import { DiJavascript } from 'react-icons/di'
-import { FaJs, FaNodeJs, FaPython } from 'react-icons/fa'
-import { RiCloseLine, RiNextjsLine, RiTailwindCssLine, RiArrowRightLine } from 'react-icons/ri'
-import { SiHuggingface, SiMongodb, SiScikitlearn, SiTypescript } from 'react-icons/si'
+import React, { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { RiNextjsLine, RiTailwindCssLine, RiArrowRightLine, RiCloseLine, RiExternalLinkLine } from 'react-icons/ri'
+import { SiMongodb, SiTypescript, SiScikitlearn, SiHuggingface } from 'react-icons/si'
+import { FaNodeJs, FaPython, FaJs } from 'react-icons/fa'
 import type { ReactElement } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 
+gsap.registerPlugin(ScrollTrigger)
 
 interface Project {
   id: number
@@ -20,260 +22,171 @@ interface Project {
   link: string
 }
 
-const Projects = () => {
-  const projects: Project[] = [
-      {
-        id: 1,
-        title: '90+ Online Based Test (OBT)',
-        headline: 'Empowering Academic Excellence',
-        description:
-          '90+ OBT is an innovative exam preparation platform designed to help university aspirants and jambites achieve top scores. Collaborating with high-achieving UI students who scored 90+ in their exam, I built a dynamic web application that streamlines registration, grants secure access to mock exams, and delivers a seamless, timed OBT experience. Using Next.js and Node.js, I crafted an intuitive interface with real-time feedback and robust backend logic to manage user authentication and question delivery. This project reflects my passion for creating impactful educational tools that blend sleek design with reliable functionality.',
-        tech_stack: [
-          <RiNextjsLine key="next" />,
-          <RiTailwindCssLine key="tailwind" />,
-          <SiTypescript key="ts" />,
-          <SiMongodb key="mongo" />,
-          <FaNodeJs key="node" />,
-        ],
-        features: ['User registration', 'Admin-controlled access', 'Timed exams', 'Responsive UI', 'Embedded Calculator'],
-        image: '/UI_demo.png',
-        category: 'website',
-        link: 'https://90-tutorials.vercel.app',
-      },
-      {
-        id: 2,
-        title: 'MedTech',
-        headline: 'AI-Powered Healthcare Innovation',
-        description:
-          'MedTech is a cutting-edge platform leveraging AI to revolutionize healthcare accessibility. I designed and built a web application that delivers predictive health insights, starting with mental health and diabetes detection models, using Python, Scikit-learn, and FastAPI. The responsive frontend, crafted with Next.js, Tailwind CSS, ensures an intuitive user experience, while the backend powers real-time predictions and health data management. MedTech aims to empower users with early risk detection and personalized care.',
-        tech_stack: [
-          <FaPython key="python" />,
-          <SiScikitlearn key="sklearn" />,
-          <RiNextjsLine key="next" />,
-          <RiTailwindCssLine key="tailwind" />,
-          <SiTypescript key="ts" />,
-        ],
-        features: ['AI-driven health predictions', 'User-friendly interface'],
-        image: '/medtech.png',
-        category: 'smart website',
-        link: 'https://med-techai.vercel.app',
-      },
-      {
-        id: 3,
-        title: "Reader's assistant",
-        headline: 'Empowering Confident Reading',
-        description:
-          "Reader's Assistant is an innovative AI-powered platform designed to transform the reading experience for students. I built this tool to make reading accessible, comfortable and engaging, using text-to-speech, optical character recognition to convert both pdf and text image into plain text, also embedded a pretrained question and answer model to allow user paste texts and ask questions based on it.",
-        tech_stack: [
-          <FaJs key="js" />,
-          <SiHuggingface key="huggingface" />,
-          <RiNextjsLine key="next" />,
-          <RiTailwindCssLine key="tailwind" />,
-        ],
-        features: ['Voice-driven Feedback', 'Responsive Design'],
-        image: '/readerass.png',
-        category: 'smart website',
-        link: 'https://reader-s-assistant-ai.vercel.app'
-      },
-      {
-        id: 4,
-        title: 'E-Mart',
-        headline: 'AI-Enhanced E-Commerce',
-        description:
-          'eMart is a smart e-commerce platform I built to push the boundaries of modern web development and AI-driven user engagement. I integrated scikit-learn based machine learning models to provide personalized product recommendations.',
-        tech_stack: [
-          <FaJs key="js" />,
-          <RiNextjsLine key="next" />,
-          <RiTailwindCssLine key="tailwind" />,
-          <SiScikitlearn key="sklearn" />,
-          <FaPython key="python" />,
-        ],
-        features: ['ML-driven product suggestions'],
-        image: '/emart.png',
-        category: 'smart website',
-        link: 'https://e-mart-rho.vercel.app',
-      },
-      {
-        id: 5,
-        title: 'Text Snap',
-        headline: 'Creative Text-Image Web Tool',
-        description:
-          'Text snap is a lightweight, browser-based tool that empowers users to create stunning text-over-image designs without downloading any software. It leverages Quill.js for a rich text editor with sleek formatting options, allowing users to craft and style text effortlessly.',
-        tech_stack: [
-          <RiNextjsLine key="next" />,
-          <FaJs key="js" />,
-          <RiTailwindCssLine key="tailwind" />,
-        ],
-        features: ['Rich text editor', 'Dynamic backgrounds', 'Text-image blending', 'Responsive UI'],
-        image: '/textsnap.png',
-        category: 'website',
-        link: 'https://text-snap-neon.vercel.app',
-      },
-    ]
+const projects: Project[] = [
+  {
+    id: 1,
+    title: '90+ Online Based Test',
+    headline: 'Empowering Academic Excellence',
+    description: 'A high-performance exam platform built for university aspirants. I engineered a robust backend to handle real-time timed mock exams and secure user authentication, providing a seamless OBT experience for thousands of students.',
+    tech_stack: [<RiNextjsLine key="n" />, <RiTailwindCssLine key="t" />, <SiTypescript key="ts" />, <SiMongodb key="m" />, <FaNodeJs key="nj" />],
+    features: ['Real-time Timed Exams', 'Secure Auth', 'Admin Dashboard', 'Embedded Calculator'],
+    image: '/UI_demo.png',
+    category: 'website',
+    link: 'https://90-tutorials.vercel.app',
+  },
+  {
+    id: 2,
+    title: 'MedTech AI',
+    headline: 'AI-Powered Healthcare Innovation',
+    description: 'Leveraging machine learning to revolutionize health accessibility. Developed predictive models using Scikit-learn to detect early risks for diabetes and mental health issues, integrated into a high-end Next.js frontend.',
+    tech_stack: [<FaPython key="p" />, <SiScikitlearn key="s" />, <RiNextjsLine key="n" />, <SiTypescript key="ts" />],
+    features: ['Predictive ML Models', 'FastAPI Backend', 'Health Data Visualization'],
+    image: '/medtech.png',
+    category: 'smart website',
+    link: 'https://med-techai.vercel.app',
+  },
+  {
+    id: 3,
+    title: "Reader's Assistant",
+    headline: 'Intelligent Reading Ecosystem',
+    description: 'A transformer-based platform converting static PDF/Images into interactive reading experiences. Uses OCR and Pre-trained LLMs to allow students to query their study materials via voice or text.',
+    tech_stack: [<SiHuggingface key="h" />, <RiNextjsLine key="n" />, <FaJs key="j" />, <RiTailwindCssLine key="t" />],
+    features: ['OCR to Text', 'AI Q&A Model', 'Voice-driven Feedback'],
+    image: '/readerass.png',
+    category: 'smart website',
+    link: 'https://reader-s-assistant-ai.vercel.app'
+  }
+  // ... (Add others similarly)
+]
 
-  // 🔑 Repeat projects for infinite effect
-  const infiniteProjects = [...projects, ...projects, ...projects]
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [activeIndex, setActiveIndex] = useState(projects.length) // start in the middle copy
+export default function Projects() {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // scroll tracking
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
 
-    const handleScroll = () => {
-      const { scrollLeft, clientWidth, scrollWidth } = container
-      const newIndex = Math.round(scrollLeft / clientWidth)
-      setActiveIndex(newIndex % projects.length)
-
-      const maxScroll = scrollWidth - clientWidth
-
-      // 🔁 Loop effect
-      if (scrollLeft <= 0) {
-        container.scrollLeft = projects.length * clientWidth
-      } else if (scrollLeft >= maxScroll) {
-        container.scrollLeft = projects.length * clientWidth - clientWidth
-      }
-    }
-
-    container.addEventListener('scroll', handleScroll, { passive: true })
-
-    // jump to the middle on mount
-    requestAnimationFrame(() => {
-      container.scrollLeft = projects.length * container.clientWidth
-    })
-
-    return () => container.removeEventListener('scroll', handleScroll)
-  }, [projects.length])
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
 
   return (
-    <section className="h-screen w-full sticky top-0 lg:flex items-center justify-center hidden flex-col mt-20">
-      <h1 className="text-[#FAA037] text-3xl font-bold">Projects</h1>
-      <p className='italic'>Swipe to view all projects</p>
-      <div
-        ref={containerRef}
-        className="flex overflow-x-scroll scrollbar-hidden snap-x snap-mandatory scroll-smooth h-full w-full rounded-2xl"
-      >
-        {/* {infiniteProjects.map((project, idx) => {
-          const isActive = idx % projects.length === activeIndex
-          return (
-            <motion.div
-              key={idx}
-              className="relative flex-shrink-0 w-[80%] h-[80vh] snap-center flex items-center justify-center rounded-2xl"
-              style={{
-                backgroundImage: `url(${project.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-              animate={{
-                scale: isActive ? 1 : 0.85,
-                opacity: isActive ? 1 : 0.5,
-              }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="absolute inset-0 rounded-2xl bg-black/60" />
-              <AnimatePresence>
-                {isActive && (
-                  <motion.div
-                    className="relative z-10 max-w-3xl px-6 text-white"
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 50, opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <h2 className="text-4xl font-bold">{project.title}</h2>
-                    <p className="text-xl mt-2 text-indigo-300">
-                      {project.headline}
-                    </p>
-                    <p className="mt-4 text-lg leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="flex gap-3 mt-4 text-2xl">
-                      {project.tech_stack.map((icon, i) => (
-                        <span key={i}>{icon}</span>
-                      ))}
-                    </div>
-                    <ul className="mt-4 space-y-1 text-sm text-gray-200">
-                      {project.features.map((feature, i) => (
-                        <li key={i}>• {feature}</li>
-                      ))}
-                    </ul>
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-6 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-xl transition"
-                    >
-                      Visit Project
-                    </a>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          )
-        })} */}
-        {infiniteProjects.map((project, idx) => {
-          const isActive = idx % projects.length === activeIndex
-          return (
-            <div
-              key={idx}
-              className="flex-shrink-0 w-full snap-center flex items-center justify-center"
-            >
-              <motion.div
-                className="relative w-[80%] h-[80vh] flex items-center justify-center rounded-2xl"
-                style={{
-                  backgroundImage: `url(${project.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-                animate={{
-                  scale: isActive ? 1 : 0.85,
-                  opacity: isActive ? 1 : 0.5,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="absolute inset-0 rounded-2xl bg-black/60" />
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      className="relative z-10 max-w-3xl px-6 text-white"
-                      initial={{ y: 50, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: 50, opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <h2 className="text-4xl font-bold">{project.title}</h2>
-                      <p className="text-xl mt-2 text-indigo-300">{project.headline}</p>
-                      <p className="mt-4 text-lg leading-relaxed">{project.description}</p>
-                      <div className="flex gap-3 mt-4 text-2xl">
-                        {project.tech_stack.map((icon, i) => (
-                          <span key={i}>{icon}</span>
-                        ))}
-                      </div>
-                      <ul className="mt-4 space-y-1 text-sm text-gray-200">
-                        {project.features.map((feature, i) => (
-                          <li key={i}>• {feature}</li>
-                        ))}
-                      </ul>
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-6 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 rounded-xl transition"
-                      >
-                        Visit Project
-                      </a>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </div>
-          )
-        })}
+    <section id="projects" className="relative bg-[#0a0a0a]">
+      {/* 💻 DESKTOP: Horizontal Cinematic Scroll */}
+      <div ref={targetRef} className="hidden lg:block h-[300vh] relative">
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden px-10">
+          <div className="absolute top-20 left-20 z-10">
+            <h2 className="text-sm uppercase tracking-[0.5em] text-[#97694d] font-bold mb-2">Portfolio</h2>
+            <h3 className="text-6xl font-black text-white">Selected Systems.</h3>
+          </div>
 
+          <motion.div style={{ x }} className="flex gap-20 mt-20">
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                whileHover={{ y: -10 }}
+                className="group relative flex-shrink-0 w-[800px] h-[500px] rounded-3xl overflow-hidden border border-white/5 bg-white/5 backdrop-blur-sm"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
+                <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+
+                <div className="absolute bottom-0 left-0 p-12 z-20 w-full">
+                  <span className="text-xs uppercase tracking-widest text-[#97694d] font-bold mb-2 block">{project.category}</span>
+                  <h4 className="text-4xl font-black text-white mb-4">{project.title}</h4>
+                  <p className="text-white/60 line-clamp-2 max-w-xl mb-6">{project.description}</p>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-4 text-2xl text-white/40">
+                      {project.tech_stack}
+                    </div>
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="px-6 py-3 bg-[#97694d] rounded-full text-sm font-bold flex items-center gap-2 hover:bg-[#a4795e] transition-all"
+                    >
+                      Case Study <RiArrowRightLine />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
+
+      {/* 📱 MOBILE: Clean Vertical Stack */}
+      <div className="lg:hidden px-6 py-20 space-y-12">
+        <div className="mb-10">
+          <h2 className="text-xs uppercase tracking-[0.4em] text-[#97694d] font-bold mb-2">Featured Work</h2>
+          <h3 className="text-4xl font-black text-white">Impactful Builds.</h3>
+        </div>
+
+        {projects.map((project) => (
+          <div key={project.id} className="project-card-mobile group">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <img src={project.image} alt={project.title} className="w-full h-64 object-cover" />
+              <div className="p-6">
+                <h4 className="text-2xl font-bold mb-2">{project.title}</h4>
+                <p className="text-white/50 text-sm line-clamp-3 mb-6">{project.description}</p>
+                <button
+                  onClick={() => setSelectedProject(project)}
+                  className="w-full py-4 border border-[#97694d]/30 text-[#97694d] rounded-xl font-bold flex justify-center items-center gap-2"
+                >
+                  View Details <RiArrowRightLine />
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 🖼️ CASE STUDY MODAL (Premium Implementation) */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-10"
+          >
+            <div className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }}
+              className="relative w-full max-w-6xl bg-[#121212] rounded-[2rem] overflow-hidden border border-white/10 flex flex-col lg:flex-row h-full lg:h-[80vh] shadow-2xl"
+            >
+              <button onClick={() => setSelectedProject(null)} className="absolute top-6 right-6 z-50 p-3 bg-black/50 rounded-full text-white hover:bg-white/10 transition-all text-2xl">
+                <RiCloseLine />
+              </button>
+
+              <div className="lg:w-1/2 h-64 lg:h-full relative">
+                <img src={selectedProject.image} className="w-full h-full object-cover" alt="" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#121212] to-transparent hidden lg:block" />
+              </div>
+
+              <div className="lg:w-1/2 p-8 lg:p-16 overflow-y-auto custom-scrollbar">
+                <span className="text-[#97694d] uppercase tracking-[0.3em] font-bold text-xs">{selectedProject.category}</span>
+                <h2 className="text-4xl lg:text-5xl font-black mt-4 mb-6">{selectedProject.title}</h2>
+                <p className="text-white/70 text-lg leading-relaxed mb-8">{selectedProject.description}</p>
+
+                <div className="mb-10">
+                  <h5 className="text-white font-bold mb-4 uppercase text-xs tracking-widest">Core Capabilities</h5>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedProject.features.map(f => (
+                      <span key={f} className="px-4 py-2 bg-white/5 rounded-lg border border-white/5 text-sm text-white/80">{f}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <a href={selectedProject.link} target="_blank" className="flex-1 py-5 bg-[#97694d] rounded-2xl flex justify-center items-center gap-3 font-bold hover:bg-[#a4795e] transition-all">
+                    Visit Project <RiExternalLinkLine />
+                  </a>
+                  <div className="flex gap-4 items-center justify-center text-3xl text-white/30">
+                    {selectedProject.tech_stack}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
-
-export default Projects

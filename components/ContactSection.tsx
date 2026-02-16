@@ -1,77 +1,118 @@
 'use client'
-import Link from 'next/link';
-import React, {useState, useEffect} from 'react'
-import { FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa';
-import {MdEmail} from 'react-icons/md'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
+import { MdEmail, MdArrowOutward } from 'react-icons/md'
+import Link from 'next/link'
 
-interface Contact {
-  id: number;
-  headline: string;
-  words: string;
-}
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactSection = () => {
-  const writeUp: Contact[] = [{
-    id: 1,
-    headline: "Let's build something amazing together!",
-    words: "Are you looking for a skilled full-stack developer to bring  your project to life? Need a creative problem solver to tackle complex challenges? I'd love to collaborate and help you achieve your goals."
-  },
-  {
-    id: 2,
-    headline: "Need a tech expert to take your project to the next level?",
-    words: "Whether it's building a new app, revamping an existing website, or solving a tricky development problem, I'm here to help. Let's chat about how I can contribute to your success."
-  },
-  {
-    id: 3,
-    headline: "Ready to turn your ideas into reality?",
-    words: "As a seasoned full-stack developer, I'd love to help you build, launch, and grow your digital presence. Whether you're a startup, entrepreneur, or establieshed business, let's explore how we can work together to achieve your goals."
-  },
-  {
-    id: 4,
-    headline: "Got a project in mind? Let's make it happen",
-    words: "With expertise in full-stack development, I'm passionate about delivering high-quality solutions that meet your needs. Whether you need a developer, collaborator, or tech advisor, I'm her to help."
-  }]
-
-  const [randomWriteUp, setRandomWriteUp] = useState<null | Contact>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * writeUp.length)
-    setRandomWriteUp(writeUp[randomIndex])
-  }, [])
+    const ctx = gsap.context(() => {
+      gsap.from(".contact-reveal", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        }
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className='mx-5 pt-5 my-10' id='contact'>
-      <h1 className='text-3xl font-bold'>Contact Me</h1>
+    <section ref={sectionRef} id="contact" className="py-24 px-6 md:px-20 lg:px-32 relative overflow-hidden">
+      {/* Background Gradient Element */}
+      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[600px] h-[300px] bg-[#97694d]/10 blur-[120px] rounded-full -z-10" />
 
-      <div className="flex lg:flex-row flex-col pt-4 lg:justify-between">
-        <div>
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:justify-between gap-16">
 
-          <h1 className='lg:text-3xl text-2xl font-bold text-[#FAA037]'>
-            {randomWriteUp ? randomWriteUp.headline : writeUp[0].headline}
-          </h1>
-          <p className='lg:w-[650px] text-xl mt-5'>{randomWriteUp ? randomWriteUp.words : writeUp[0].words}</p>
+        {/* Positioning Column */}
+        <div className="lg:w-3/5 text-center lg:text-left">
+          <h2 className="contact-reveal text-sm uppercase tracking-[0.5em] text-[#97694d] font-bold mb-6">
+            Final Step
+          </h2>
+          <h3 className="contact-reveal text-4xl md:text-6xl font-black text-white leading-tight mb-8">
+            Ready to Build the <br />
+            <span className="text-white/30 italic">Next Big System?</span>
+          </h3>
+          <p className="contact-reveal text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Whether you are a founder looking for a technical partner or an established team seeking an AI-focused architect, I am ready to deploy. I bridge the gap between complex engineering and premium product design.
+          </p>
         </div>
 
-        <div className='w-full bg-[#a4795e] mt-5 rounded flex items-center justify-center gap-10 py-5 px-5 shadow lg:w-[600px] lg:mr-10 lg:gap-16'>
-          <Link href={'https://www.linkedin.com/in/idowu-tijesunimi-189492294'} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
-            <FaLinkedin />
-          </Link>
+        {/* Interaction Dock */}
+        <div className="contact-reveal lg:w-2/5 w-full flex flex-col gap-4">
+          <div className="bg-white/5 border border-white/10 rounded-[2rem] p-8 md:p-12 backdrop-blur-xl shadow-2xl">
+            <h4 className="text-white font-bold mb-8 uppercase text-xs tracking-widest text-center">Direct Channels</h4>
 
-          <Link href={"https://wa.me/+2347018268171?text=I'm%20interested%20in%20your%20service"} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
-            <FaWhatsapp />
-          </Link>
+            <div className="grid grid-cols-2 gap-4">
+              <ContactLink
+                href="https://www.linkedin.com/in/idowu-tijesunimi-189492294"
+                icon={<FaLinkedin />}
+                label="LinkedIn"
+              />
+              <ContactLink
+                href="https://wa.me/+2347018268171?text=Hello%20Tijesunimi,%20I'm%20interested%20in%20discussing%20a%20project."
+                icon={<FaWhatsapp />}
+                label="WhatsApp"
+              />
+              <ContactLink
+                href="mailto:tijesunimiidowu16@gmail.com"
+                icon={<MdEmail />}
+                label="Email"
+              />
+              <ContactLink
+                href="https://x.com/codelight001"
+                icon={<FaTwitter />}
+                label="Twitter"
+              />
+            </div>
 
-          <Link href={'mailto:tijesunimiidowu16@gmail.com'} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
-            <MdEmail />
-          </Link>
-          
-          <Link href={'https://x.com/codelight001'} className='bg-[#97694d] rounded w-[40px] h-[40px] flex items-center justify-center text-2xl lg:text-5xl lg:w-[80px] lg:h-[80px]'>
-            <FaTwitter />
-          </Link>
+            <Link
+              href="mailto:tijesunimiidowu16@gmail.com"
+              className="mt-8 w-full py-5 bg-[#97694d] hover:bg-[#a4795e] text-white rounded-2xl flex items-center justify-center gap-3 font-black transition-all group"
+            >
+              START A PROJECT <MdArrowOutward className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </div>
+
+      {/* Footer Signature */}
+      <footer className="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 opacity-40 hover:opacity-100 transition-opacity">
+        <p className="text-xs tracking-widest uppercase font-bold text-white">
+          © {new Date().getFullYear()} Idowu Tijesunimi • AI Product Builder
+        </p>
+        <p className="text-xs tracking-widest uppercase font-bold text-white">
+          Engineered in Ibadan, Nigeria
+        </p>
+      </footer>
     </section>
   )
 }
 
-export default ContactSection
+const ContactLink = ({ href, icon, label }: { href: string, icon: React.ReactNode, label: string }) => (
+  <Link
+    href={href}
+    target="_blank"
+    className="flex flex-col items-center justify-center p-6 bg-white/5 border border-white/5 rounded-2xl hover:border-[#97694d]/40 hover:bg-[#97694d]/5 transition-all group"
+  >
+    <span className="text-3xl text-white/40 group-hover:text-[#97694d] group-hover:scale-110 transition-all mb-2">
+      {icon}
+    </span>
+    <span className="text-[10px] font-bold text-white/20 group-hover:text-white/60 tracking-widest uppercase transition-all">
+      {label}
+    </span>
+  </Link>
+);
+
+export default ContactSection;
