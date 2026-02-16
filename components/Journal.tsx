@@ -58,9 +58,9 @@ const DevJournal = () => {
     <section ref={sectionRef} id="journal" className="py-24 px-6 md:px-20 lg:px-32 relative">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <h2 className="text-sm uppercase tracking-[0.5em] text-[#97694d] font-bold mb-4">Live Roadmap</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-white">The Dev <span className="text-white/30 italic">Journal.</span></h3>
-          <p className="text-white/50 mt-4 max-w-xl text-lg">A real-time look at my professional trajectory—from institutional systems at UCH to modern AI platforms.</p>
+          <h2 className="text-sm uppercase tracking-[0.5em] text-[#97694d] font-bold mb-4">Ongoing Roadmap</h2>
+          <h3 className="text-4xl md:text-5xl font-black text-white">My Builder's <span className="text-white/30 italic">Journal.</span></h3>
+          <p className="text-white/50 mt-4 max-w-xl text-lg">A living record of what I’m building, learning, studying, and experimenting with — from health systems to AI platforms and everything in between.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
