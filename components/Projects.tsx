@@ -27,7 +27,7 @@ const projects: Project[] = [
     id: 1,
     title: '90+ Online Based Test',
     headline: 'Empowering Academic Excellence',
-    description: 'A high-performance exam platform built for university aspirants. I engineered a robust backend to handle real-time timed mock exams and secure user authentication, providing a seamless OBT experience for thousands of students.',
+    description: 'A high-performance examination platform built for university aspirants preparing for UTME and Post-UTME. I designed and architected the backend to handle real-time timed mock exams, secure authentication, and structured result tracking — creating a reliable digital testing environment students can depend on.',
     tech_stack: [<RiNextjsLine key="n" />, <RiTailwindCssLine key="t" />, <SiTypescript key="ts" />, <SiMongodb key="m" />, <FaNodeJs key="nj" />],
     features: ['Real-time Timed Exams', 'Secure Auth', 'Admin Dashboard', 'Embedded Calculator'],
     image: '/UI_demo.png',
@@ -38,7 +38,7 @@ const projects: Project[] = [
     id: 2,
     title: 'MedTech AI',
     headline: 'AI-Powered Healthcare Innovation',
-    description: 'Leveraging machine learning to revolutionize health accessibility. Developed predictive models using Scikit-learn to detect early risks for diabetes and mental health issues, integrated into a high-end Next.js frontend.',
+    description: 'A health-focused AI platform built to explore early risk detection and awareness. I developed machine learning models using Scikit-learn to analyze health indicators and integrated them into a responsive Next.js frontend — combining predictive intelligence with accessible user experience.',
     tech_stack: [<FaPython key="p" />, <SiScikitlearn key="s" />, <RiNextjsLine key="n" />, <SiTypescript key="ts" />],
     features: ['Predictive ML Models', 'FastAPI Backend', 'Health Data Visualization'],
     image: '/medtech.png',
@@ -49,14 +49,24 @@ const projects: Project[] = [
     id: 3,
     title: "Reader's Assistant",
     headline: 'Intelligent Reading Ecosystem',
-    description: 'A transformer-based platform converting static PDF/Images into interactive reading experiences. Uses OCR and Pre-trained LLMs to allow students to query their study materials via voice or text.',
+    description: 'An intelligent reading platform that transforms static PDFs and images into interactive study sessions. Leveraging OCR and pretrained language models, it allows users to query their materials through text or voice — turning passive reading into active learning.',
     tech_stack: [<SiHuggingface key="h" />, <RiNextjsLine key="n" />, <FaJs key="j" />, <RiTailwindCssLine key="t" />],
     features: ['OCR to Text', 'AI Q&A Model', 'Voice-driven Feedback'],
     image: '/readerass.png',
     category: 'smart website',
     link: 'https://reader-s-assistant-ai.vercel.app'
+  },
+  {
+    id: 4,
+    title: 'Health Systems Exploration',
+    headline: 'Designing Decision-Support Tools',
+    description: 'An ongoing exploration into building digital tools that support better lifestyle and health decisions. Focused on awareness, and clarity.',
+    tech_stack: [<RiTailwindCssLine key="t" />, <RiNextjsLine key="n" />, <SiTypescript key="ts" />],
+    features: ['Decision-Support Logic', 'Health-Focused UX', 'Scalable Architecture'],
+    image: '/health_explore.png',
+    category: 'smart website',
+    link: '#'
   }
-  // ... (Add others similarly)
 ]
 
 export default function Projects() {
@@ -76,7 +86,7 @@ export default function Projects() {
         <div className="sticky top-0 h-screen flex items-center overflow-hidden px-10">
           <div className="absolute top-20 left-20 z-10">
             <h2 className="text-sm uppercase tracking-[0.5em] text-[#97694d] font-bold mb-2">Portfolio</h2>
-            <h3 className="text-6xl font-black text-white">Selected Systems.</h3>
+            <h3 className="text-6xl font-black text-white">Built Systems.</h3>
           </div>
 
           <motion.div style={{ x }} className="flex gap-20 mt-20">
@@ -116,7 +126,7 @@ export default function Projects() {
       <div className="lg:hidden px-6 py-20 space-y-12">
         <div className="mb-10">
           <h2 className="text-xs uppercase tracking-[0.4em] text-[#97694d] font-bold mb-2">Featured Work</h2>
-          <h3 className="text-4xl font-black text-white">Impactful Builds.</h3>
+          <h3 className="text-4xl font-black text-white">Systems & Products.</h3>
         </div>
 
         {projects.map((project) => (

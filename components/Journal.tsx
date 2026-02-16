@@ -15,10 +15,10 @@ const journalEntries = [
     status: "Completed"
   },
   {
-    category: "Current Build",
+    category: "AI Product Development",
     icon: <RiPulseLine />,
     title: "Optimizing Cliva's Store Context",
-    description: "Currently engineering the 'Store Context' component for Cliva (formerly Akira AI). Focusing on how the AI interprets Shopify store data to provide accurate sales assistance.",
+    description: "Currently refining the “Store Context” intelligence layer in Cliva — focusing on how AI interprets product data, customer behavior, and store structure to assist with real purchase decisions. The goal is clarity, not noise..",
     status: "Active"
   },
   {
@@ -27,6 +27,41 @@ const journalEntries = [
     title: "Database Migration: PostgreSQL",
     description: "Refactoring the 90+ OBT backend. Migrating from file-based storage to PostgreSQL to handle scaling user sessions and complex relational exam data.",
     status: "In-Progress"
+  },
+  {
+    category: "Health Innovation",
+    icon: <RiHospitalLine />,
+    title: "MedTech: AI Health Prediction Systems",
+    description: "Building and experimenting with AI-driven health prediction models focused on awareness and early risk detection. This phase strengthened my understanding of responsible AI usage in sensitive domains like healthcare.",
+    status: "Evolving"
+  },
+  {
+    category: "What I'm Studying",
+    icon: <RiBookReadLine />,
+    title: "Systems Thinking & Health Technology",
+    description: "Studying systems thinking, prevention models, and how technology can improve healthcare accessibility. Books and long-form materials I consume shape how I approach product design and long-term impact.",
+    status: "Ongoing"
+  },
+  {
+    category: "Perspective Shift",
+    icon: <RiBookReadLine />,
+    title: "Global Health & Technology Case Studies",
+    description: "Exploring documentaries and case studies on how technology reshapes healthcare systems worldwide. These insights influence how I design for clarity, scalability, and real-world constraints.",
+    status: "Exploring"
+  },
+  {
+    category: "Lessons Learned",
+    icon: <RiCodeLine />,
+    title: "What Building Has Taught Me",
+    description: "Clean architecture beats quick hacks. Users value clarity over complexity. And long-term thinking always outperforms short-term hype. Every project reinforces these principles.",
+    status: "Refined"
+  },
+  {
+    category: "Product Evolution",
+    icon: <RiPulseLine />,
+    title: "Health-Focused Platform Exploration",
+    description: "Currently exploring early-stage health-focused platforms centered around awareness, lifestyle guidance, and intelligent decision support. The focus is building tools that strengthen human decision-making.",
+    status: "Research Phase"
   }
 ];
 
