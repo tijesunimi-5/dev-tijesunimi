@@ -106,6 +106,28 @@ const projects: Project[] = [
   },
   {
     id: 5,
+    title: "RCCG York",
+    headline: "Modern Church Web Platform",
+    description:
+      "Designed and developed a modern, responsive church website to streamline access to sermons, announcements, service information, and media content. Built with performance, clarity, and accessibility in mind — ensuring both members and first-time visitors can navigate seamlessly.",
+    tech_stack: [
+      <RiNextjsLine key="n" />,
+      <RiTailwindCssLine key="t" />,
+      <SiTypescript key="ts" />,
+      <FaNodeJs key="nj" />,
+      <SiMongodb key="m" />,
+    ],
+    features: [
+      "Dynamic Sermon Uploads",
+      "YouTube Integration",
+      "Responsive UI/UX",
+    ],
+    image: "/rccgyork.png",
+    category: "website",
+    link: "http://rccgyork-6fih.vercel.app/",
+  },
+  {
+    id: 6,
     title: 'MedTech AI',
     headline: 'AI-Powered Healthcare Innovation',
     description:
@@ -122,7 +144,7 @@ const projects: Project[] = [
     link: 'https://med-techai.vercel.app',
   },
   {
-    id: 6,
+    id: 7,
     title: "Reader's Assistant",
     headline: 'Interactive AI-Powered Learning',
     description:
@@ -137,6 +159,47 @@ const projects: Project[] = [
     image: '/readerass.png',
     category: 'smart website',
     link: 'https://reader-s-assistant-ai.vercel.app',
+  }, 
+  {
+    id: 8,
+    title: "eMart",
+    headline: "E-commerce + Recommendation System",
+    description:
+      "An early exploration into building an e-commerce platform integrated with a basic machine learning recommendation engine. The project helped me understand user behavior modeling and product suggestion logic using Scikit-learn.",
+    tech_stack: [
+      <RiNextjsLine key="n" />,
+      <FaNodeJs key="nj" />,
+      <SiMongodb key="m" />,
+      <FaPython key="p" />,
+      <SiScikitlearn key="s" />,
+    ],
+    features: [
+      "Product Recommendation Engine",
+      "User Behavior Tracking",
+      "Full-stack Architecture",
+    ],
+    image: "/emart.png",
+    category: "smart website",
+    link: "https://e-mart-rho.vercel.app",
+  },
+  {
+    id: 9,
+    title: "Text Snap",
+    headline: "Lightweight Image & Text Tool",
+    description:
+      "A simple creative utility tool built to merge images and text using JavaScript Canvas APIs. Focused on frontend interaction design and rapid prototyping. One of my early hands-on experiments with browser rendering logic.",
+    tech_stack: [
+      <FaJs key="j" />,
+      <RiTailwindCssLine key="t" />,
+    ],
+    features: [
+      "Canvas Image Manipulation",
+      "Text Overlay Engine",
+      "Clean Minimal UI",
+    ],
+    image: "/textsnap.png",
+    category: "website",
+    link: "https://text-snap-neon.vercel.app",
   },
 ]
 
@@ -149,7 +212,7 @@ export default function Projects() {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-70%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
   return (
     <section id="projects" className="relative bg-[#0a0a0a]">
