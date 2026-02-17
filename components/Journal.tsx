@@ -36,33 +36,62 @@ const journalEntries = [
     status: "Evolving"
   },
   {
-    category: "What I'm Studying",
+    category: "Health Innovation",
+    icon: <RiHospitalLine />,
+    title: "EFAA: Emergency First-Aid Assistant",
+    description: "EFAA started from a simple question — what happens when someone collapses and nobody knows what to do? Many people walk away from emergencies not because they don't care, but because they are afraid and unsure. I'm building a tool that guides people step-by-step on what to do before medical help arrives. It also includes a learning section so users can prepare before emergencies happen. I'm building this with a team of medical students and we're focused on real impact.",
+    status: "In Development"
+  },
+  {
+    category: "Faith & Community",
+    icon: <RiPulseLine />,
+    title: "Jesus Connect",
+    description: "Jesus Connect came from seeing how many people are afraid to open up about their struggles. Some are shy. Some fear judgment. The idea is to build a safe platform where users can choose to stay anonymous, select what area they need help in — finance, addiction, spiritual growth — and get matched with pastors or counselors who specialize in those areas. We also narrow it down by location. I believe this will help people find real support and direction. Currently in development.",
+    status: "In Development"
+  },
+  {
+    category: "AI Product",
+    icon: <RiCodeLine />,
+    title: "Cliva: AI Sales Assistant",
+    description: "Cliva is a conversion-focused AI sales assistant built for store owners. It understands store products deeply and helps customers make better buying decisions. It’s not just a chatbot — it guides, upsells, cross-sells, and gives store owners clear insights into performance and customer behavior. The product is live and I'm currently looking for early users.",
+    status: "Live"
+  },
+  {
+    category: "Personal Growth",
     icon: <RiBookReadLine />,
-    title: "Systems Thinking & Health Technology",
-    description: "Studying systems thinking, prevention models, and how technology can improve healthcare accessibility. Books and long-form materials I consume shape how I approach product design and long-term impact.",
+    title: "Reading: The Psychology of Money",
+    description: "This book changed how I see money. I understood that people spend based on what they've told themselves about money. Nobody is crazy — we all have money stories. I became more intentional about budgeting, cutting unnecessary costs, and thinking long-term.",
+    status: "Completed"
+  },
+  {
+    category: "Personal Growth",
+    icon: <RiBookReadLine />,
+    title: "Reading: Boundaries",
+    description: "This book taught me to know what I am and what I am not. I learned to define my values clearly, state what I tolerate and what I don’t, respect people's decisions, and value my time more. I’ve seen real changes in my daily life because of this.",
+    status: "Completed"
+  },
+  {
+    category: "Leadership Development",
+    icon: <RiBookReadLine />,
+    title: "Currently Reading: Emotional Intelligence Habit",
+    description: "I'm learning to understand my emotions instead of suppressing them. I’m working on not letting emotions control my actions while still acknowledging them. It’s helping me manage people better, lead my team well, and encourage others with maturity.",
+    status: "Reading"
+  },
+  {
+    category: "Discipline",
+    icon: <RiPulseLine />,
+    title: "100 Days Commitment Challenge",
+    description: "I joined a 100-day commitment challenge focused on becoming a better version of myself. The discipline has been stretching, but I can see the difference already. My goal is to become a highly disciplined and principle-driven man.",
     status: "Ongoing"
   },
   {
-    category: "Perspective Shift",
-    icon: <RiBookReadLine />,
-    title: "Global Health & Technology Case Studies",
-    description: "Exploring documentaries and case studies on how technology reshapes healthcare systems worldwide. These insights influence how I design for clarity, scalability, and real-world constraints.",
-    status: "Exploring"
+    category: "Health Exposure",
+    icon: <RiHospitalLine />,
+    title: "Leadership Webinar – Nursing Association",
+    description: "I attended a leadership webinar hosted by a nursing association. It was inspiring to be around health professionals. I’m deeply interested in health opportunities — not to treat patients directly, but to use technology to solve real problems in healthcare.",
+    status: "Attended"
   },
-  {
-    category: "Lessons Learned",
-    icon: <RiCodeLine />,
-    title: "What Building Has Taught Me",
-    description: "Clean architecture beats quick hacks. Users value clarity over complexity. And long-term thinking always outperforms short-term hype. Every project reinforces these principles.",
-    status: "Refined"
-  },
-  {
-    category: "Product Evolution",
-    icon: <RiPulseLine />,
-    title: "Health-Focused Platform Exploration",
-    description: "Currently exploring early-stage health-focused platforms centered around awareness, lifestyle guidance, and intelligent decision support. The focus is building tools that strengthen human decision-making.",
-    status: "Research Phase"
-  }
+
 ];
 
 const DevJournal = () => {
@@ -94,7 +123,7 @@ const DevJournal = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2 className="text-sm uppercase tracking-[0.5em] text-[#97694d] font-bold mb-4">Ongoing Roadmap</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-white">My Builder's <span className="text-white/30 italic">Journal.</span></h3>
+          <h3 className="text-4xl md:text-5xl font-black text-white">My Growth <span className="text-white/30 italic">Journal.</span></h3>
           <p className="text-white/50 mt-4 max-w-xl text-lg">A living record of what I’m building, learning, studying, and experimenting with — from health systems to AI platforms and everything in between.</p>
         </div>
 

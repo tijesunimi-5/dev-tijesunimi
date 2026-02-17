@@ -35,11 +35,11 @@ const TabSection = () => {
         style={{ opacity: 0 }} // Prevents flash of unstyled content before GSAP kicks in
         className="flex items-center gap-1 p-1.5 bg-black/20 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-[#97694d]/50"
       >
-        <NavLink href="#hero" label="Home" />
+        {/* <NavLink href="#hero" label="Home" /> */}
         <NavLink href="#about" label="Identity" />
-        <NavLink href="#journal" label="Journal" />
+        {/* <NavLink href="#journal" label="Journal" /> */}
         <NavLink href="#projects" label="Systems" />
-        <NavLink href="#collaborate" label="Collab" />
+        {/* <NavLink href="#collaborate" label="Collab" /> */}
         <NavLink href="#skill" label="Skill" />
         <NavLink href="#contact" label="Connect" />
 

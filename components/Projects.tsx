@@ -27,47 +27,119 @@ const projects: Project[] = [
     id: 1,
     title: '90+ Online Based Test',
     headline: 'Empowering Academic Excellence',
-    description: 'A high-performance examination platform built for university aspirants preparing for UTME and Post-UTME. I designed and architected the backend to handle real-time timed mock exams, secure authentication, and structured result tracking — creating a reliable digital testing environment students can depend on.',
-    tech_stack: [<RiNextjsLine key="n" />, <RiTailwindCssLine key="t" />, <SiTypescript key="ts" />, <SiMongodb key="m" />, <FaNodeJs key="nj" />],
+    description:
+      'A high-performance examination platform built for university aspirants preparing for UTME and Post-UTME. I designed and architected the backend to handle real-time timed mock exams, secure authentication, and structured result tracking — creating a reliable digital testing environment students can depend on.',
+    tech_stack: [
+      <RiNextjsLine key="n" />,
+      <RiTailwindCssLine key="t" />,
+      <SiTypescript key="ts" />,
+      <SiMongodb key="m" />,
+      <FaNodeJs key="nj" />,
+    ],
     features: ['Real-time Timed Exams', 'Secure Auth', 'Admin Dashboard', 'Embedded Calculator'],
-    image: '/UI_demo.png',
+    image: '/newlanding.png',
     category: 'website',
     link: 'https://90-tutorials.vercel.app',
   },
   {
     id: 2,
+    title: 'Cliva',
+    headline: 'Conversion-focused AI sales assistant',
+    description:
+    'Cliva is an AI-powered assistant designed to help customers make smarter purchase decisions. It interprets product data, store structure, and user intent to reduce confusion and guide clearer buying choices. The focus is clarity over noise.',
+    tech_stack: [
+      <RiNextjsLine key="n" />,
+      <RiTailwindCssLine key="t" />,
+      <SiTypescript key="ts" />,
+      <FaNodeJs key="nj" />,
+    ],
+    features: [
+      'Store Context Intelligence',
+      'AI Purchase Guidance',
+      'Structured Product Insights',
+    ],
+    image: '/cliva.png',
+    category: 'smart website',
+    link: 'https://clivaai.vercel.app',
+  },
+  {
+    id: 3,
+    title: 'Emergency First-Aid Assistant (EFAA)',
+    headline: 'Smart Health Awareness Assistant',
+    description:
+    'EFAA is a health platform designed to provide calm, step-by-step guidance when every second counts. It helps users understand daily health risks, provides step-by-step guidance during emergencies, and encourages early action through intelligent recommendations. Built around clarity, trust, and accessibility.',
+    tech_stack: [
+      <RiNextjsLine key="n" />,
+      <RiTailwindCssLine key="t" />,
+      <SiTypescript key="ts" />,
+      // <FaPython key="p" />,
+    ],
+    features: [
+      'Personalized Health Insights',
+      'Preventive Education Flow',
+      // 'AI-Assisted Awareness System',
+    ],
+    image: '/efaa.png',
+    category: 'smart website',
+    link: '#',
+  },
+  {
+    id: 4,
+    title: 'Jesus Connect',
+    headline: 'Faith Meets Community & Purpose',
+    description:
+      'A digital platform built to connect believers for spiritual growth, counseling, and mentorship. Jesus Connect provides personalized faith journeys, and counselor dashboards — blending technology with human connection and purpose.',
+    tech_stack: [
+      <RiNextjsLine key="n" />,
+      <RiTailwindCssLine key="t" />,
+      <SiTypescript key="ts" />,
+      <FaNodeJs key="nj" />,
+    ],
+    features: [
+      'Counselor Dashboard',
+      'Interactive Prayer Rooms',
+      'User Faith Journey Profiles',
+    ],
+    image: '/jesusConnect.png',
+    category: 'smart website',
+    link: '#',
+  },
+  {
+    id: 5,
     title: 'MedTech AI',
     headline: 'AI-Powered Healthcare Innovation',
-    description: 'A health-focused AI platform built to explore early risk detection and awareness. I developed machine learning models using Scikit-learn to analyze health indicators and integrated them into a responsive Next.js frontend — combining predictive intelligence with accessible user experience.',
-    tech_stack: [<FaPython key="p" />, <SiScikitlearn key="s" />, <RiNextjsLine key="n" />, <SiTypescript key="ts" />],
+    description:
+      'A health-focused AI platform built to explore early risk detection and awareness. I developed machine learning models using Scikit-learn to analyze health indicators and integrated them into a responsive Next.js frontend — combining predictive intelligence with accessible user experience.',
+    tech_stack: [
+      <FaPython key="p" />,
+      <SiScikitlearn key="s" />,
+      <RiNextjsLine key="n" />,
+      <SiTypescript key="ts" />,
+    ],
     features: ['Predictive ML Models', 'FastAPI Backend', 'Health Data Visualization'],
     image: '/medtech.png',
     category: 'smart website',
     link: 'https://med-techai.vercel.app',
   },
   {
-    id: 3,
+    id: 6,
     title: "Reader's Assistant",
-    headline: 'Intelligent Reading Ecosystem',
-    description: 'An intelligent reading platform that transforms static PDFs and images into interactive study sessions. Leveraging OCR and pretrained language models, it allows users to query their materials through text or voice — turning passive reading into active learning.',
-    tech_stack: [<SiHuggingface key="h" />, <RiNextjsLine key="n" />, <FaJs key="j" />, <RiTailwindCssLine key="t" />],
+    headline: 'Interactive AI-Powered Learning',
+    description:
+      'An intelligent reading platform that transforms static PDFs and images into interactive study sessions. Leveraging OCR and pretrained language models, it allows users to query their materials through text or voice — turning passive reading into active learning.',
+    tech_stack: [
+      <SiHuggingface key="h" />,
+      <RiNextjsLine key="n" />,
+      <FaJs key="j" />,
+      <RiTailwindCssLine key="t" />,
+    ],
     features: ['OCR to Text', 'AI Q&A Model', 'Voice-driven Feedback'],
     image: '/readerass.png',
     category: 'smart website',
-    link: 'https://reader-s-assistant-ai.vercel.app'
+    link: 'https://reader-s-assistant-ai.vercel.app',
   },
-  {
-    id: 4,
-    title: 'Health Systems Exploration',
-    headline: 'Designing Decision-Support Tools',
-    description: 'An ongoing exploration into building digital tools that support better lifestyle and health decisions. Focused on awareness, and clarity.',
-    tech_stack: [<RiTailwindCssLine key="t" />, <RiNextjsLine key="n" />, <SiTypescript key="ts" />],
-    features: ['Decision-Support Logic', 'Health-Focused UX', 'Scalable Architecture'],
-    image: '/health_explore.png',
-    category: 'smart website',
-    link: '#'
-  }
 ]
+
 
 export default function Projects() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -185,9 +257,13 @@ export default function Projects() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-6">
-                  <a href={selectedProject.link} target="_blank" className="flex-1 py-5 bg-[#97694d] rounded-2xl flex justify-center items-center gap-3 font-bold hover:bg-[#a4795e] transition-all">
-                    Visit Project <RiExternalLinkLine />
-                  </a>
+                  {selectedProject.link === "#" ? 
+                    <a href='#' target="_blank" className="flex-1 py-5 bg-[#97694d] rounded-2xl flex justify-center items-center gap-3 font-bold hover:bg-[#a4795e] transition-all">
+                     In Progress 
+                    </a> : 
+                    <a href={selectedProject.link} target="_blank" className="flex-1 py-5 bg-[#97694d] rounded-2xl flex justify-center items-center gap-3 font-bold hover:bg-[#a4795e] transition-all">
+                      Visit Project <RiExternalLinkLine />
+                    </a>}
                   <div className="flex gap-4 items-center justify-center text-3xl text-white/30">
                     {selectedProject.tech_stack}
                   </div>

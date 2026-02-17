@@ -11,17 +11,17 @@ gsap.registerPlugin(ScrollTrigger);
 const skills = {
   frontend: [
     { name: 'React / Next.js', level: 'Advanced', icon: <RiNextjsLine />, rating: 85 },
-    { name: 'TypeScript', level: 'Advanced', icon: <SiTypescript />, rating: 80 },
+    { name: 'TypeScript', level: 'Advanced', icon: <SiTypescript />, rating: 60 },
     { name: 'Tailwind CSS', level: 'Expert', icon: <RiTailwindCssLine />, rating: 90 },
     { name: 'GSAP / Motion', level: 'Intermediate', icon: <FaJs />, rating: 75 },
   ],
   backend: [
     { name: 'Node.js / Express', level: 'Building', icon: <SiExpress />, rating: 60 },
     { name: 'PostgreSQL', level: 'Learning', icon: <SiPostgresql />, rating: 55 },
-    { name: 'MongoDB', level: 'Intermediate', icon: <SiMongodb />, rating: 70 },
+    { name: 'MongoDB', level: 'Intermediate', icon: <SiMongodb />, rating: 60 },
   ],
   ai_data: [
-    { name: 'Python (ML)', level: 'Core', icon: <FaPython />, rating: 75 },
+    { name: 'Python (ML)', level: 'Core', icon: <FaPython />, rating: 65 },
     { name: 'NLP & Transformers', level: 'Learning', icon: <SiScikitlearn />, rating: 50 },
     { name: 'Predictive Modeling', level: 'In-Progress', icon: null, rating: 60 },
   ]
