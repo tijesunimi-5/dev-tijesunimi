@@ -25,8 +25,7 @@ export default function Home() {
 
       <Visionary />
 
-      {/* 3. Momentum (The "Blog" feel you wanted) */}
-      <DevJournal />
+      
 
       {/* 4. Proof of Systems */}
       <Projects />
@@ -36,6 +35,9 @@ export default function Home() {
 
       {/* 6. Technical Arsenal */}
       <Skillset />
+
+      {/* 3. Momentum (The "Blog" feel you wanted) */}
+      <DevJournal />
 
       {/* 7. Closing & Connection */}
       <ContactSection />
