@@ -70,7 +70,7 @@ const Visionary = () => {
           </h2>
 
           <div className="vision-text">
-            <h4 className="text-xl font-bold text-white mb-2">Idowu Tijesunimi</h4>
+            <h4 className="text-xl font-bold text-white mb-2">Idowu S.A Tijesunimi</h4>
             <p className="text-white/40 uppercase tracking-widest text-xs font-black">
               Founder & Systems Architect • Ibadan, Nigeria
             </p>

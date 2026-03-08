@@ -90,7 +90,7 @@ const ContactSection = () => {
       {/* Footer Signature */}
       <footer className="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 opacity-40 hover:opacity-100 transition-opacity">
         <p className="text-xs tracking-widest uppercase font-bold text-white">
-          © {new Date().getFullYear()} Idowu Tijesunimi • AI Product Builder
+          © {new Date().getFullYear()} Idowu S.A Tijesunimi • AI Product Builder
         </p>
         <p className="text-xs tracking-widest uppercase font-bold text-white">
           Engineered in Ibadan, Nigeria
