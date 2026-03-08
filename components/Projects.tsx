@@ -63,6 +63,28 @@ const projects: Project[] = [
     link: 'https://clivaai.vercel.app',
   },
   {
+    id: 10,
+    title: "BizSite Studio",
+    headline: "Instant Business Website Previews",
+    description:
+      "BizSite Studio is a smart website generation system designed to help businesses instantly preview what their website could look like. By dynamically personalizing demo websites using brand data, it allows prospects to experience a tailored website concept before committing — turning outreach into an interactive product experience.",
+    tech_stack: [
+      <RiNextjsLine key="n" />,
+      <RiTailwindCssLine key="t" />,
+      <SiTypescript key="ts" />,
+      <FaNodeJs key="nj" />,
+    ],
+    features: [
+      "Dynamic Brand Personalization",
+      "Instant Website Preview Generation",
+      "Custom Demo Link System",
+      "Conversion-Focused Landing Experience",
+    ],
+    image: "/bizsite.png",
+    category: "smart website",
+    link: "https://bizsite-studio.vercel.app",
+  },
+  {
     id: 3,
     title: 'Emergency First-Aid Assistant (EFAA)',
     headline: 'Smart Health Awareness Assistant',
